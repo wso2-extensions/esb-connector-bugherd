@@ -1,0 +1,12 @@
+{
+  "apiUrl": "%s(apiUrl)",
+  "apiKey": "%s(apiKey)",
+  "projectId": "%s(projectId)",
+  "taskId": "%s(taskId)",
+  "page":
+  %
+  s
+  (
+  page
+  )
+}
