@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+~  Copyright (c) 2016, WSO2 Inc. (http://wso2.com) All Rights Reserved.
+~
+~  WSO2 Inc. licenses this file to you under the Apache License,
+~  Version 2.0 (the "License"); you may not use this file except
+~  in compliance with the License.
+~  You may obtain a copy of the License at
+~
+~   http://www.apache.org/licenses/LICENSE-2.0
+~
+~  Unless required by applicable law or agreed to in writing,
+~  software distributed under the License is distributed on an
+~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+~  KIND, either express or implied.  See the License for the
+~  specific language governing permissions and limitations
+~  under the License.
+-->
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="bugherd" transports="https,http"
+       statistics="disable" trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="apiUrl" expression="json-eval($.apiUrl)"/>
+            <property name="projectId" expression="json-eval($.projectId)"/>
+            <property name="apiKey" expression="json-eval($.apiKey)"/>
+            <property name="taskId" expression="json-eval($.taskId)"/>
+            <property name="page" expression="json-eval($.page)"/>
+            <property name="attachmentId" expression="json-eval($.attachmentId)"/>
+            <property name="isActive" expression="json-eval($.isActive)"/>
+            <property name="task" expression="json-eval($.task)"/>
+            <property name="createdSince" expression="json-eval($.createdSince)"/>
+            <property name="status" expression="json-eval($.status)"/>
+            <property name="tag" expression="json-eval($.tag)"/>
+            <property name="priority" expression="json-eval($.priority)"/>
+            <property name="assignedToId" expression="json-eval($.assignedToId)"/>
+            <property name="updatedSince" expression="json-eval($.updatedSince)"/>
+            <property name="externalId" expression="json-eval($.externalId)"/>
+            <property name="page" expression="json-eval($.page)"/>
+            <property name="comment" expression="json-eval($.comment)"/>
+            <property name="devurl" expression="json-eval($.devurl)"/>
+            <property name="name" expression="json-eval($.name)"/>
+            <property name="isPublic" expression="json-eval($.isPublic)"/>
+            <bugherd.init>
+                <apiUrl>{$ctx:apiUrl}</apiUrl>
+                <projectId>{$ctx:projectId}</projectId>
+                <apiKey>{$ctx:apiKey}</apiKey>
+            </bugherd.init>
+            <switch source="get-property('transport','Action')">
+                <case regex="urn:uploadTaskAttachment">
+                    <bugherd.init>
+                        <apiUrl>{$url:apiUrl}</apiUrl>
+                        <projectId>{$url:projectId}</projectId>
+                        <apiKey>{$url:apiKey}</apiKey>
+                    </bugherd.init>
+                    <bugherd.uploadTaskAttachment>
+                        <taskId>{$url:taskId}</taskId>
+                        <fileName>{$url:fileName}</fileName>
+                    </bugherd.uploadTaskAttachment>
+                </case>
+                <case regex="urn:listTaskAttachments">
+                    <bugherd.listTaskAttachments>
+                        <taskId>{$ctx:taskId}</taskId>
+                        <page>{$ctx:page}</page>
+                    </bugherd.listTaskAttachments>
+                </case>
+                <case regex="urn:deleteTaskAttachment">
+                    <bugherd.deleteTaskAttachment>
+                        <taskId>{$ctx:taskId}</taskId>
+                        <attachmentId>{$ctx:attachmentId}</attachmentId>
+                    </bugherd.deleteTaskAttachment>
+                </case>
+                <case regex="urn:addTaskComment">
+                    <bugherd.addTaskComment>
+                        <taskId>{$ctx:taskId}</taskId>
+                        <comment>{$ctx:comment}</comment>
+                    </bugherd.addTaskComment>
+                </case>
+                <case regex="urn:listTaskComments">
+                    <bugherd.listTaskComments>
+                        <taskId>{$ctx:taskId}</taskId>
+                        <page>{$ctx:page}</page>
+                    </bugherd.listTaskComments>
+                </case>
+                <case regex="urn:listProjects">
+                    <bugherd.listProjects>
+                        <isActive>{$ctx:isActive}</isActive>
+                    </bugherd.listProjects>
+                </case>
+                <case regex="urn:createProjectTask">
+                    <bugherd.createProjectTask>
+                        <task>{$ctx:task}</task>
+                    </bugherd.createProjectTask>
+                </case>
+                <case regex="urn:listProjectTasks">
+                    <bugherd.listProjectTasks>
+                        <createdSince>{$ctx:createdSince}</createdSince>
+                        <status>{$ctx:status}</status>
+                        <tag>{$ctx:tag}</tag>
+                        <priority>{$ctx:priority}</priority>
+                        <assignedToId>{$ctx:assignedToId}</assignedToId>
+                        <updatedSince>{$ctx:updatedSince}</updatedSince>
+                        <externalId>{$ctx:externalId}</externalId>
+                        <page>{$ctx:page}</page>
+                    </bugherd.listProjectTasks>
+                </case>
+                <case regex="urn:updateProjectTask">
+                    <bugherd.updateProjectTask>
+                        <task>{$ctx:task}</task>
+                        <taskId>{$ctx:taskId}</taskId>
+                    </bugherd.updateProjectTask>
+                </case>
+                <case regex="urn:createProject">
+                    <bugherd.createProject>
+                        <name>{$ctx:name}</name>
+                        <devurl>{$ctx:devurl}</devurl>
+                        <isActive>{$ctx:isActive}</isActive>
+                        <isPublic>{$ctx:isPublic}</isPublic>
+                    </bugherd.createProject>
+                </case>
+                <case regex="urn:showProjectTask">
+                    <bugherd.showProjectTask>
+                        <taskId>{$ctx:taskId}</taskId>
+                    </bugherd.showProjectTask>
+                </case>
+            </switch>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <log/>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>
