@@ -48,7 +48,7 @@ public class BugherdConnectorIntegrationTest extends ConnectorIntegrationTestBas
     @BeforeClass(alwaysRun = true)
     public void setEnvironment() throws Exception {
 
-        init("bugherd-connector-1.0.0");
+        init("bugherd-connector-1.0.1-SNAPSHOT");
 
         String authorizationString = connectorProperties.getProperty("apiKey") + ":x";
         String authorizationToken = new String(Base64.encodeBase64(authorizationString.getBytes()));
