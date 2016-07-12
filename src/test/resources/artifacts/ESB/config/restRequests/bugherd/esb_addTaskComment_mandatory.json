@@ -4,12 +4,7 @@
   "projectId": "%s(projectId)",
   "taskId": "%s(taskId)",
   "comment": {
-    "user_id":
-    %
-    s
-    (
-    userId
-    ),
+    "user_id":%s(userId),
     "text": "%s(commentMandatoryText)"
   }
 }

@@ -6,11 +6,6 @@
   "task": {
     "status": "%s(updateStatus)",
     "priority": "%s(updatePriority)",
-    "assigned_to_id":
-    %
-    s
-    (
-    assignedToId
-    )
+    "assigned_to_id":%s(assignedToId)
   }
 }

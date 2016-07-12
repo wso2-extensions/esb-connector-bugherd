@@ -48,7 +48,7 @@ public class BugherdConnectorIntegrationTest extends ConnectorIntegrationTestBas
     @BeforeClass(alwaysRun = true)
     public void setEnvironment() throws Exception {
 
-        init("bugherd-connector-1.0.1-SNAPSHOT");
+        init("bugherd-connector-1.0.1");
 
         String authorizationString = connectorProperties.getProperty("apiKey") + ":x";
         String authorizationToken = new String(Base64.encodeBase64(authorizationString.getBytes()));
@@ -218,7 +218,8 @@ public class BugherdConnectorIntegrationTest extends ConnectorIntegrationTestBas
      * @throws JSONException
      * @throws IOException
      */
-    @Test(dependsOnMethods = {"testCreateProjectTaskWithMandatoryParameters"}, description = "bugherd {updateProjectTask} integration test with mandatory parameters.")
+    @Test(dependsOnMethods = {"testCreateProjectTaskWithMandatoryParameters"},
+            description = "bugherd {updateProjectTask} integration test with mandatory parameters.")
     public void testUpdateProjectTaskWithMandatoryParameters() throws NumberFormatException, InterruptedException,
             IOException, JSONException {
 
@@ -250,7 +251,8 @@ public class BugherdConnectorIntegrationTest extends ConnectorIntegrationTestBas
      * @throws JSONException
      * @throws IOException
      */
-    @Test(dependsOnMethods = {"testCreateProjectTaskWithMandatoryParameters"}, description = "bugherd {updateProjectTask} integration test with optional parameters.")
+    @Test(dependsOnMethods = {"testCreateProjectTaskWithMandatoryParameters"},
+            description = "bugherd {updateProjectTask} integration test with optional parameters.")
     public void testUpdateProjectTaskWithOptionalParameters() throws NumberFormatException, InterruptedException,
             IOException, JSONException {
 
@@ -308,7 +310,8 @@ public class BugherdConnectorIntegrationTest extends ConnectorIntegrationTestBas
      * @throws JSONException
      * @throws IOException
      */
-    @Test(priority = 1, dependsOnMethods = {"testCreateProjectTaskWithMandatoryParameters"}, description = "bugherd {listProjectTasks} integration test with mandatory parameters.")
+    @Test(priority = 1, dependsOnMethods = {"testCreateProjectTaskWithMandatoryParameters"},
+            description = "bugherd {listProjectTasks} integration test with mandatory parameters.")
     public void testListProjectTasksWithMandatoryParameters() throws NumberFormatException, InterruptedException,
             IOException, JSONException {
 
@@ -365,7 +368,8 @@ public class BugherdConnectorIntegrationTest extends ConnectorIntegrationTestBas
      * @throws JSONException
      * @throws IOException
      */
-    @Test(priority = 1, dependsOnMethods = {"testCreateProjectTaskWithMandatoryParameters"}, description = "bugherd {addTaskComment} integration test with mandatory parameters.")
+    @Test(priority = 1, dependsOnMethods = {"testCreateProjectTaskWithMandatoryParameters"},
+            description = "bugherd {addTaskComment} integration test with mandatory parameters.")
     public void testAddTaskCommentWithMandatoryParameters() throws NumberFormatException, InterruptedException,
             IOException, JSONException {
 
@@ -429,7 +433,8 @@ public class BugherdConnectorIntegrationTest extends ConnectorIntegrationTestBas
      * @throws JSONException
      * @throws IOException
      */
-    @Test(priority = 1, dependsOnMethods = {"testAddTaskCommentWithMandatoryParameters"}, description = "Bugherd {listTaskComments} integration test with optional parameters.")
+    @Test(priority = 1, dependsOnMethods = {"testAddTaskCommentWithMandatoryParameters"},
+            description = "Bugherd {listTaskComments} integration test with optional parameters.")
     public void testListTaskCommentsWithMandatoryParameters() throws IOException, JSONException, XMLStreamException,
             InterruptedException {
 
@@ -460,7 +465,8 @@ public class BugherdConnectorIntegrationTest extends ConnectorIntegrationTestBas
      * @throws JSONException
      * @throws IOException
      */
-    @Test(priority = 1, dependsOnMethods = {"testAddTaskCommentWithMandatoryParameters"}, description = "Bugherd {listTaskComments} integration test with optional parameters.")
+    @Test(priority = 1, dependsOnMethods = {"testAddTaskCommentWithMandatoryParameters"},
+            description = "Bugherd {listTaskComments} integration test with optional parameters.")
     public void testListTaskCommentsWithOptionalParameters() throws IOException, JSONException, XMLStreamException,
             InterruptedException {
 
@@ -518,7 +524,8 @@ public class BugherdConnectorIntegrationTest extends ConnectorIntegrationTestBas
      * @throws JSONException
      * @throws IOException
      */
-    @Test(priority = 1, dependsOnMethods = {"testCreateProjectTaskWithMandatoryParameters"}, description = "Bugherd {uploadTaskAttachment} integration test with mandatory parameters.")
+    @Test(priority = 1, dependsOnMethods = {"testCreateProjectTaskWithMandatoryParameters"},
+            description = "Bugherd {uploadTaskAttachment} integration test with mandatory parameters.")
     public void testUploadTaskAttachmentWithMandatoryParameters() throws IOException, JSONException,
             NumberFormatException, InterruptedException {
 
@@ -570,7 +577,8 @@ public class BugherdConnectorIntegrationTest extends ConnectorIntegrationTestBas
      * @throws JSONException
      * @throws IOException
      */
-    @Test(priority = 1, dependsOnMethods = {"testCreateProjectTaskWithMandatoryParameters"}, description = "Bugherd {uploadTaskAttachment} integration test with optional parameters.")
+    @Test(priority = 1, dependsOnMethods = {"testCreateProjectTaskWithMandatoryParameters"},
+            description = "Bugherd {uploadTaskAttachment} integration test with optional parameters.")
     public void testUploadTaskAttachmentWithOptionalParameters() throws IOException, JSONException,
             NumberFormatException, InterruptedException {
 
@@ -670,7 +678,8 @@ public class BugherdConnectorIntegrationTest extends ConnectorIntegrationTestBas
      * @throws IOException
      */
     @Test(priority = 1, dependsOnMethods = {"testUploadTaskAttachmentWithMandatoryParameters",
-            "testUploadTaskAttachmentWithOptionalParameters"}, description = "Bugherd {listTaskAttachments} integration test with optional parameters.")
+            "testUploadTaskAttachmentWithOptionalParameters"},
+            description = "Bugherd {listTaskAttachments} integration test with optional parameters.")
     public void testListTaskAttachmentsWithMandatoryParameters() throws IOException, JSONException,
             NumberFormatException, InterruptedException {
 
@@ -702,7 +711,8 @@ public class BugherdConnectorIntegrationTest extends ConnectorIntegrationTestBas
      * @throws IOException
      */
     @Test(priority = 1, dependsOnMethods = {"testUploadTaskAttachmentWithMandatoryParameters",
-            "testUploadTaskAttachmentWithOptionalParameters"}, description = "Bugherd {listTaskAttachments} integration test with optional parameters.")
+            "testUploadTaskAttachmentWithOptionalParameters"},
+            description = "Bugherd {listTaskAttachments} integration test with optional parameters.")
     public void testListTaskAttachmentsWithOptionalParameters() throws IOException, JSONException,
             NumberFormatException, InterruptedException {
 
@@ -760,7 +770,8 @@ public class BugherdConnectorIntegrationTest extends ConnectorIntegrationTestBas
      * @throws JSONException
      * @throws IOException
      */
-    @Test(priority = 1, dependsOnMethods = {"testListTaskAttachmentsWithMandatoryParameters"}, description = "Bugherd {deleteTaskAttachment} integration test with optional parameters.")
+    @Test(priority = 1, dependsOnMethods = {"testListTaskAttachmentsWithMandatoryParameters"},
+            description = "Bugherd {deleteTaskAttachment} integration test with optional parameters.")
     public void testDeleteTaskAttachmentWithMandatoryParameters() throws IOException, JSONException,
             NumberFormatException, InterruptedException {
 
