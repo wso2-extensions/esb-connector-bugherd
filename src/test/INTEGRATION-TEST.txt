@@ -9,13 +9,13 @@
    Tested Platforms: 
 
       - Microsoft WINDOWS V-7
-      - UBUNTU 13.04
-      - WSO2 ESB 4.9.0
+      - UBUNTU 13.04, 14.04
+      - WSO2 ESB 4.9.0, 5.0.0-BETA
       - Java 1.7
  
    Steps to follow in setting integration test.
 
-   1. Download ESB 4.9.0 from the official website
+   1. Download ESB 5.0.0-BETA and add "-XX:-UseSplitVerifier" under $JVM_MEM_OPTS into {ESB_HOME}/bin/wso2server.sh".
 
    2. Follow the below mentioned steps for adding valid certificate to access bugherd API over https.
 
@@ -28,7 +28,7 @@
           NOTE : CERT_FILE_NAME is the file name which was extracted from bugherd, change it accordingly (e.g.: bugherd.cer).
           CERT_NAME is name of the certificate (e.g.: bugherd).
    
-      iii)Go to new WSO2 ESB 4.9.0 folder and place the downloaded certificate in "<ESB_HOME>/repository/resources/security/"
+      iii)Go to new WSO2 ESB 5.0.0-BETA folder and place the downloaded certificate in "<ESB_HOME>/repository/resources/security/"
 
       iv) Navigate to "<ESB_HOME>/repository/resources/security/" using command prompt and execute keytool -importcert -file CERT_FILE_NAME -keystore client-truststore.jks -alias "CERT_NAME" in command line to import Bugherd certificate in to keystore. Give "wso2carbon" as password.
           NOTE : CERT_FILE_NAME is the file name which was extracted from bugherd, change it accordingly. (e.g.: bugherd.cer)
@@ -54,7 +54,7 @@
       <messageBuilder contentType="application/binary" class="org.apache.axis2.builder.MultipartFormDataBuilder"/>
       <messageBuilder contentType="text/plain" class="org.apache.axis2.format.PlainTextBuilder"/>
  
-   4. Compress modified ESB as wso2esb-4.9.0.zip and copy that zip file in to location "<BUGHERD_CONNECTOR_HOME>/repository/".
+   4. Compress modified ESB as wso2esb-5.0.0-BETA.zip and copy that zip file in to location "<BUGHERD_CONNECTOR_HOME>/repository/".
  
    5. Create a BugHerd account and derive the access token:
       i)   Using the URL "https://www.bugherd.com/" create a BugHerd account.

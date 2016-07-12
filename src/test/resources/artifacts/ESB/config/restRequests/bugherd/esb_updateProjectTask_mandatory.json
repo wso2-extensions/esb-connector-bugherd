@@ -3,5 +3,9 @@
   "apiKey": "%s(apiKey)",
   "projectId": "%s(projectId)",
   "taskId": "%s(taskId)",
-  "task": {}
+  "task": {
+    "status": "%s(updateStatus)",
+    "priority": "%s(updatePriority)",
+    "assigned_to_id":"%s(assignedToId)"
+  }
 }

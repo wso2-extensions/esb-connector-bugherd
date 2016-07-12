@@ -3,10 +3,5 @@
   "apiKey": "%s(apiKey)",
   "projectId": "%s(projectId)",
   "taskId": "%s(taskId)",
-  "page":
-  %
-  s
-  (
-  page
-  )
+  "page":%s(page)
 }
