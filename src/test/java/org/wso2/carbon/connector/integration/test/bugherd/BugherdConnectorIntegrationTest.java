@@ -18,13 +18,6 @@
 
 package org.wso2.carbon.connector.integration.test.bugherd;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.xml.stream.XMLStreamException;
-
 import org.apache.commons.codec.binary.Base64;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +26,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.wso2.connector.integration.test.base.ConnectorIntegrationTestBase;
 import org.wso2.connector.integration.test.base.RestResponse;
+
+import javax.xml.stream.XMLStreamException;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BugherdConnectorIntegrationTest extends ConnectorIntegrationTestBase {
 
@@ -48,7 +47,7 @@ public class BugherdConnectorIntegrationTest extends ConnectorIntegrationTestBas
     @BeforeClass(alwaysRun = true)
     public void setEnvironment() throws Exception {
 
-        init("bugherd-connector-1.0.1");
+        init("bugherd-connector-1.0.2-SNAPSHOT");
 
         String authorizationString = connectorProperties.getProperty("apiKey") + ":x";
         String authorizationToken = new String(Base64.encodeBase64(authorizationString.getBytes()));
