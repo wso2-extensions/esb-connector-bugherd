@@ -1,0 +1,21 @@
+{
+    "name": "BugHerd",
+    "owner": "WSO2",
+    "category": "Issue Tracking and Project Management",
+    "documentationUrl": "https://docs.wso2.com/display/ESBCONNECTORS/BugHerd+Connector",
+    "description": "The BugHerd connector allows you to access the exposed API through WSO2 ESB. BugHerd is one of the simplest bug-tracking tools. It allows you to turn client feedback into actionable tasks, team collaboration, and task management designed for web projects. The connector uses the BugHerd API Reference.",
+    "status": "Unsupported",
+    "labels": [
+        "connector"
+    ],
+    "releases": [
+        {
+            "tagName": "v1.0.1",
+            "products": [
+                "ESB 5.0.0",
+                "ESB 4.9.0"
+            ],
+            "isHidden": false
+        }
+    ]
+}
